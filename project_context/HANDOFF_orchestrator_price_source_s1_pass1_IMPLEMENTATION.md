@@ -1,4 +1,4 @@
-# HANDOFF — Claude → Copilot: S1 Price-Source Coverage, Pass 1 IMPLEMENTATION (v3, observed-shape capture)
+# HANDOFF — Claude → Orchestrator: S1 Price-Source Coverage, Pass 1 IMPLEMENTATION (v3, observed-shape capture)
 
 **Task:** Implement **S1 Pass 1 coverage code + tests only**, per
 `project_context/SPEC_price_source_s1_coverage.md` (ACCEPTED / coverage-only) and the
