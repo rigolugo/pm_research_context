@@ -1,4 +1,4 @@
-# HANDOFF — Claude → Copilot: S1 Pass 1 request-window fix
+# HANDOFF — Claude → Orchestrator: S1 Pass 1 request-window fix
 
 **Task:** Review and patch the S1 Pass-1 request-window logic. The user-run completed but the
 observed GET used a ~1-second window (`startTs=1778383995`, `endTs=1778383996`), producing
