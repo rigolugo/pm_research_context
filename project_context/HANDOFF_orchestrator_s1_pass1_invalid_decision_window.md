@@ -1,4 +1,4 @@
-# HANDOFF — Claude → Copilot: S1 Pass 1 invalid decision-window handling
+# HANDOFF — Claude → Orchestrator: S1 Pass 1 invalid decision-window handling
 
 **Task:** Patch S1 Pass 1 so invalid/missing decision windows are excluded and reported
 instead of being coerced into 1-second queries and false `DECISION_PRICE_NEITHER` negatives.
