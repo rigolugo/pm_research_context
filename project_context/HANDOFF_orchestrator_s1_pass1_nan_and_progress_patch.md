@@ -1,4 +1,4 @@
-# HANDOFF — Claude → Copilot: S1 Pass 1 token-pair NaN fix + progress heartbeat
+# HANDOFF — Claude → Orchestrator: S1 Pass 1 token-pair NaN fix + progress heartbeat
 
 **Task:** Patch the S1 Pass-1 token-pair enumeration edge case that stopped the run with
 `STOP_PRECISION_LOSS: float token/index not string-safe: nan`, and add a visible progress
