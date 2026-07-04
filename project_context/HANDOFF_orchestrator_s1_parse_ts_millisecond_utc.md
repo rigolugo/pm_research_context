@@ -1,4 +1,4 @@
-# HANDOFF — Claude → Copilot: S1 parse_ts millisecond-UTC format fix
+# HANDOFF — Claude → Orchestrator: S1 parse_ts millisecond-UTC format fix
 
 **Task:** Patch `parse_ts` to accept the real `resolved_at` string format. Timestamp-parsing
 only. No network, no S1 rerun, no gate change.
