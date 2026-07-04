@@ -1,1 +1,0 @@
-Before any implementation stage that consumes existing artifacts or repo APIs, Claude must first verify the exact artifact schemas and code interfaces against DATA_CONTRACTS*.md. If the contract is absent or stale, the task is schema inspection only. Tests must mirror real artifact/API shapes, not assumed fixtures.
