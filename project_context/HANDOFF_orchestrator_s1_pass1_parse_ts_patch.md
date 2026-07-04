@@ -1,4 +1,4 @@
-# HANDOFF — Claude → Copilot: S1 Pass 1 parse_ts datetime patch
+# HANDOFF — Claude → Orchestrator: S1 Pass 1 parse_ts datetime patch
 
 **Task:** Patch the single S1 Pass-1 bug where the user-run failed before coverage execution
 with `ValueError: unparseable timestamp: Timestamp('2026-05-08 04:27:06+0000', tz='UTC')`.
