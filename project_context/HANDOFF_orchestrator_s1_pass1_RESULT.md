@@ -1,4 +1,4 @@
-# HANDOFF — Claude → Copilot: S1 Pass 1 coverage RESULT (ACCEPTED)
+# HANDOFF — Claude → Orchestrator: S1 Pass 1 coverage RESULT (ACCEPTED)
 
 **Status:** S1 Pass 1 CLOB `/prices-history` coverage test **completed (user-run) and accepted
 as a sampled coverage finding.** Documentation-only task: records the result in PROJECT_STATE,
