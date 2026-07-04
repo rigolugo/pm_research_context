@@ -1,4 +1,4 @@
-# HANDOFF — Claude → Copilot: S1 Pass 1 request-window DIAGNOSTICS
+# HANDOFF — Claude → Orchestrator: S1 Pass 1 request-window DIAGNOSTICS
 
 **Task:** Add request-window diagnostics to the S1 artifacts so the orchestrator can verify
 whether the queried windows are correct; change coverage semantics only if the request-window
