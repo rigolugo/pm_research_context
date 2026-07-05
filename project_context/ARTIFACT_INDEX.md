@@ -50,6 +50,17 @@ S1 Pass 1 **coverage-only** artifacts (user-run, ACCEPTED; verdict `S1_SOURCE_NO
 - `price_source_s1_endpoint_shape.md` — documented-vs-observed endpoint shape: `GET /prices-history` parsed cleanly (`history` list, point keys `p`/`t`, no deviation); Level-A scope note (status reflects the queried decision window, not a broader reachability probe); whole-sample request-window summary so a single observed GET is not mistaken for the sample.
   Written by `scripts/price_source_s1_coverage.py` (coverage-only; network hard-gated behind explicit CLI flags; Pass 2 hard-stopped; no writes to `prices/`; `named_binary_probe_blocked` never flipped).
 
+### `artifacts/named_binary_probe/price_source_s1_alt/`
+S1-ALT Pass 1 (Option A local trade-print) **coverage-only** artifacts (user-run, ACCEPTED; verdict `S1ALT_SOURCE_NOT_VIABLE`). Local-only (no network); reuses the exact accepted S1 Pass-1 300-condition sample. Coverage diagnostics only — **no price series is persisted**.
+- `price_source_s1_alt_coverage.json` — machine-readable Pass-1 result: `status`/`verdict = S1ALT_SOURCE_NOT_VIABLE`, `sample_reconstruction` (reconstructed true, measured_file_count 248, excluded_file_count 52, measured_by_subclass UP_DOWN 50 / OVER_UNDER 98 / NAMED_OTHER 100 — identical to S1), `universe_reconciliation` (measured 248, token_pair_unresolved 0, no_trade_anchor, no_valid_decision_window, s1_invalid_window 52, reconciled true), `level_b_class_counts` (BOTH_SIDES 124 / ONE_SIDE 65 / NEITHER 59), `per_subclass_coverage` (UP_DOWN 13/50 = 0.26, OVER_UNDER 40/98 ≈ 0.4081632653, NAMED_OTHER 71/100 = 0.71; threshold 0.95; none clear), `level_c_validation` (passed), `all_one_status_detected false`, `malformed_trade_rows_total 19`, `invalid_price_rows_total 0`, `named_binary_probe_blocked_observed true`, `no_price_series_persisted true`.
+- `price_source_s1_alt_coverage.md` — narrative summary (verdict, per-subclass coverage, sample-reconstruction provenance, honest framing).
+- `price_source_s1_alt_coverage_by_condition.csv` — per-condition coverage ledger: condition_id, subclass, side tokens, status, Level-B class, window diagnostics (first_trade_ts, decision_lower_ts, resolved_at_ts), per-side observation timestamp + gap + print count. **No price values.**
+- `price_source_s1_alt_excluded.csv` — excluded conditions with reasons: `TOKEN_PAIR_UNRESOLVED`, `NO_TRADE_ANCHOR`, `NO_VALID_DECISION_WINDOW_AFTER_WARMUP` (including the 52 S1-authoritative invalid-window conditions, each carrying its preserved raw S1 diagnostic detail string).
+- `price_source_s1_alt_source_shape.md` — observed local `Store.load_trades()` column shape (no price values recorded).
+  Written by `scripts/price_source_s1_alt_pass1_coverage.py` (coverage-only; local-only, two independent CLI safety flags gating read vs write; Pass 2 out of scope; no writes to `prices/`; `named_binary_probe_blocked` never flipped).
+
+
+
 
 ---
 

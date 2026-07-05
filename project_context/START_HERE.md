@@ -35,8 +35,10 @@ Read these, in this order, before doing anything:
 7. `PRICE_INPUT_CONTRACT_named_binary_probe.md` — accepted S0 finding on why P1 is blocked on price input.
 8. `SPEC_named_binary_probe.md` — governing spec-only document for the future offline probe.
 9. `SPEC_price_source_s1_coverage.md` — accepted S1 coverage-only spec. Historical/accepted spec context only; S1 Pass 1 has now completed with a negative sampled result.
-10. Latest active handoffs/review memos:
+10. `SPEC_price_source_alt_trade_prints.md` — accepted S1-ALT (Option A local trade-print) coverage-only spec, precision-loss correction applied. Historical/accepted spec context only; S1-ALT Pass 1 has now completed with a negative sampled result.
+11. Latest active handoffs/review memos:
     - `HANDOFF_orchestrator_s1_pass1_RESULT.md`
+    - `HANDOFF_orchestrator_s1_alt_pass1_RESULT.md`
     - `HANDOFF_orchestrator_named_binary_probe_p1_REVIEW.md`
     - `HANDOFF_orchestrator_named_binary_probe_p0.md`
 
@@ -61,15 +63,17 @@ These supporting files do not authorize implementation, data fetching, P1/P2/P3 
 
 - **S1 price-source coverage Pass 1: COMPLETED / ACCEPTED — RESULT: `S1_SOURCE_NOT_VIABLE`.** The accepted S1 coverage-only test sampled the P0 universe to check whether Polymarket CLOB `/prices-history` per token can provide usable decision-time per-side prices for both sides. On the accepted sampled run, Level-B both-sides coverage cleared 0.95 in no subclass: UP_DOWN 19/50 = 0.38, OVER_UNDER 51/98 ≈ 0.5204, NAMED_OTHER 65/100 = 0.65. This is Pass 1 sampled coverage only, not Pass 2 full-universe coverage. Consequence: CLOB `/prices-history` is not viable on this evidence; P1 remains BLOCKED with no `yes_price` fallback. No Pass 2, S2, P1/P2/P3, probe, scoring, backfill, wallet/OrdersMatched/`log_index`/PnL, or gate change is authorized; `named_binary_probe_blocked` stays `true`.
 
+- **S1-ALT Pass 1 (Option A local trade-print) coverage: COMPLETED / ACCEPTED — RESULT: `S1ALT_SOURCE_NOT_VIABLE`.** After the S1 negative, the first candidate alternative per-side price source — local trade-print reconstruction via `Store.load_trades()` (no network) — was tested per `SPEC_price_source_alt_trade_prints.md`, reusing the **exact accepted S1 Pass-1 300-condition sample** (248 measured + 52 S1-invalid-window, pre-excluded and never re-measured). On the accepted sampled run, Level-B both-sides coverage again cleared 0.95 in no subclass: UP_DOWN 13/50 = 0.26, OVER_UNDER 40/98 ≈ 0.4082, NAMED_OTHER 71/100 = 0.71. This is Pass 1 sampled coverage only. Consequence: local trade prints are not viable either on this evidence; P1 remains BLOCKED with no `yes_price` fallback and no `1 - price` synthesis. No Pass 2, Option B, Option C, S2, P1/P2/P3, probe, scoring, backfill, wallet/OrdersMatched/`log_index`/PnL, or gate change is authorized; `named_binary_probe_blocked` stays `true`.
+
 - **Chat2 Dune wallet-cohort discovery: BLOCKED.** It is a separate phase. Outcome-source scoreability does not unblock wallet discovery.
 
 ---
 
 ## Next possible step — only if explicitly authorized by the user
 
-A separate **spec-only** review of another candidate per-side / token-identity price source, or a separately justified Pass 2 full-universe coverage check.
+A separate **spec-only** review of another candidate per-side / token-identity price source — e.g. Option B (Polymarket Data API `/trades`, gap-fill only) or Option C (on-chain event reconstruction, out of scope by guardrail) — or a separately justified Pass 2 full-universe coverage check for either S1 (CLOB) or S1-ALT (local trade-print).
 
-Because S1 Pass 1 was negative, S2 does **not** follow automatically.
+Because both S1 Pass 1 and S1-ALT Pass 1 were negative — and S1-ALT reused the identical accepted S1 sample, so the two results are directly comparable — S2 does **not** follow automatically from either.
 
 Any further move requires explicit authorization and remains spec-only unless separately approved. No implementation, no data run, no backfill, no scoring, no probe.
 
